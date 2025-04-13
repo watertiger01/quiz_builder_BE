@@ -4,6 +4,7 @@ const userController = require('../controllers/userControllers')
 exports.getAllUsersView = async (req, res) => {
   try {
     const users = await userController.getAllUsers()
+    console.log('Users', users)
     res.status(200).json(users)
   } catch (err) {
     res.status(500).json({ message: err.message })
