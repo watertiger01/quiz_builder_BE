@@ -1,7 +1,9 @@
-const express = require('express')
-const router = express.Router()
-const userView = require('../views/userViews')
+import express from 'express';
+import { getAllUsersView, saveUserView } from '../views/userViews.js'; // add .js extension
 
-router.get('/getAllUsers', userView.getAllUsersView)
+const router = express.Router();
 
-module.exports = router
+router.get('/getAllUsers', getAllUsersView);
+router.post('/saveUser', saveUserView);
+
+export default router;
