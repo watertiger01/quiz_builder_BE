@@ -1,25 +1,18 @@
-import User from '../models/userModels'
+import User from '../models/userModels.js'
 
-// const User = require('../models/userModels')
-
-// Business logic: fetch users from DB
-exports.getAllUsers = async () => {
+export const getAllUsers = async () => {
   const users = await User.find()
   return users
 }
-// saveUser
 
-exports.saveUser = async (req) => {
-  console.log("byee")
-  try{
-    const user =  new User({});
-    console.log("user",user)
-  }
-  // const user =  new User();
-  // console.log("u",user)
-  catch(error){
-    console.log("error",error)
+export const saveUser = async (req) => {
+  const userobj = req.body
+  try {
+    const user = new User(userobj)
+    await user.save()
+    return user
+  } catch (error) {
+    console.log('error', error)
   }
   return {}
-  return users
 }
