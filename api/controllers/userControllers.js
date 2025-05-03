@@ -16,3 +16,14 @@ export const saveUser = async (req) => {
   }
   return {}
 }
+
+export const getUser = async (req) => {
+  const user_id = req.body.user_id;
+  try {
+    const user = await User.findOne({ user_id: user_id }); // match your schema field name
+    return user || {};
+  } catch (error) {
+    console.log('error', error);
+    return {};
+  }
+};

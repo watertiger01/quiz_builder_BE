@@ -20,3 +20,11 @@ export const saveUserView = async (req, res) => {
     res.status(500).json({ message: err.message })
   }
 }
+export const getUsersView = async (req, res) => {
+  try {
+    const users = await userController.getUser(req)
+    res.status(200).json(users)
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+}
