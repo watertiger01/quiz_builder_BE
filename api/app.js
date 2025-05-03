@@ -1,7 +1,7 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const dotenv = require('dotenv')
-const userRoutes = require('./routes/userRoutes')
+import express from 'express'
+import mongoose from 'mongoose'
+import dotenv from 'dotenv'
+import userRoutes from './routes/userRoutes.js' // note the .js extension!
 
 dotenv.config()
 
@@ -10,7 +10,7 @@ app.use(express.json()) // for parsing application/json
 
 // MongoDB Connection
 mongoose
-  .connect(process.env.MONGO_URI, { dbName: 'sample_mflix' })
+  .connect(process.env.MONGO_URI, { dbName: 'quiz_db' })
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('MongoDB connection error:', err))
 

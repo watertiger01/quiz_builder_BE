@@ -1,9 +1,28 @@
-const userController = require('../controllers/userControllers')
+import * as userController from '../controllers/userControllers.js'
 
-// View layer handles request, calls controller, sends response
-exports.getAllUsersView = async (req, res) => {
+export const getAllUsersView = async (req, res) => {
   try {
     const users = await userController.getAllUsers()
+    res.status(200).json(users)
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+}
+export const saveUserView = async (req, res) => {
+  try {
+    const user = await userController.saveUser(req)
+    if (!user) {
+      res.status(500).json({ success: false, message: 'Server Error' })
+    } else {
+      res.status(201).json({ success: true, data: user })
+    }
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+}
+export const getUsersView = async (req, res) => {
+  try {
+    const users = await userController.getUser(req)
     res.status(200).json(users)
   } catch (err) {
     res.status(500).json({ message: err.message })
