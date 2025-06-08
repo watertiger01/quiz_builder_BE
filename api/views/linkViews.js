@@ -1,9 +1,9 @@
 import * as userController from '../controllers/userControllers.js'
 import * as linkController from '../controllers/linkController.js'
-export const getAllUsersView = async (req, res) => {
+export const getLinks = async (req, res) => {
   try {
-    const users = await userController.getAllUsers()
-    res.status(200).json(users)
+    const links = await linkController.getLinks(req)
+    res.status(200).json(links)
   } catch (err) {
     res.status(500).json({ message: err.message })
   }
