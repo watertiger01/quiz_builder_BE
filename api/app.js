@@ -10,7 +10,7 @@ app.use(express.json()) // for parsing application/json
 
 // MongoDB Connection
 mongoose
-  .connect(process.env.MONGO_URI, { dbName: 'quiz_db' })
+  .connect(process.env.MONGO_URI, { dbName: 'javavsdjango' })
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('MongoDB connection error:', err))
 
