@@ -27,7 +27,7 @@ const linkSchema = new mongoose.Schema(
   }
 )
 
-userSchema.plugin(AutoIncrement, { inc_field: 'id' })
+linkSchema.plugin(AutoIncrement, { inc_field: 'id' })
 
 const Link = mongoose.model('Link', linkSchema)
 

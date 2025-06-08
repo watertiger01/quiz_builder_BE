@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import userRoutes from './routes/userRoutes.js' // note the .js extension!
+import linkRoutes from './routes/linkRoute.js' // note the .js extension!
 
 dotenv.config()
 
@@ -16,7 +17,7 @@ mongoose
 
 // Routes
 app.use('/api/users', userRoutes)
-
+app.use('/api/links', linkRoutes)
 // Start Server
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
