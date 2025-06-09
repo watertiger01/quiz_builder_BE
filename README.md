@@ -19,6 +19,6 @@ cd quiz_builder_BE/api
 
 npm install
 
-### To Run The app
+### To Run The app locally
 
-npm start
+npm run dev

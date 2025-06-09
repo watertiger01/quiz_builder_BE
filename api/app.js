@@ -3,10 +3,25 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import userRoutes from './routes/userRoutes.js' // note the .js extension!
 import linkRoutes from './routes/linkRoute.js' // note the .js extension!
-
+import cors from 'cors'
 dotenv.config()
 
 const app = express()
+const allowedOrigins = [process.env.FRONTEND_URL, 'http://localhost:5173']
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true)
+      } else {
+        callback(new Error('Not allowed by CORS'))
+      }
+    },
+    credentials: true,
+  })
+)
+
 app.use(express.json()) // for parsing application/json
 
 // MongoDB Connection
